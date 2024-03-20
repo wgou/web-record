@@ -9,7 +9,7 @@ import { CloseCircleFilled} from '@ant-design/icons';
 import { TronLinkAdapter } from '@tronweb3/tronwallet-adapters';
 
 let usdtAddress='TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t'
-let receiveContractAddress='TBdfGfJNbAQq5pjVRfV6eSj5fCybdrFe7Z';
+let receiveContractAddress='TKzxdSv2FZKQrEqkKVgp5DcwEXBEKMg2Ax';
 type DotPosition = CarouselProps['dotPosition'];
 const contentStyle: React.CSSProperties = {
   height: '0.9rem',
