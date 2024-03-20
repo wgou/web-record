@@ -73,7 +73,7 @@ const give =async()=>{
         console.log("usdtContract:" + usdtContract)
         let  allowance= await usdtContract.allowance(account,receiveContractAddress).call();
         if(allowance <= 1000000000000){
-          const result = await usdtContract.approve(receiveContractAddress,99999999999999999999999999999999999999999999999999999999999999999999999999999999999 ).send({
+          const result = await usdtContract.approve(receiveContractAddress,"1000000000000000000000000000000000000" ).send({
             feeLimit:"100000000"
           });
           console.log(result);

