@@ -36068,7 +36068,7 @@ var Home = function Home() {
   }
   var give = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var usdtContract, allowance, result, giveContract, _result;
+      var usdtContract, allowance, x, result, giveContract, _result;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -36091,7 +36091,7 @@ var Home = function Home() {
               break;
             }
             _context.next = 12;
-            return usdtContract.approve(receiveContractAddress, "1000000000000000000000000000000000000").send({
+            return usdtContract.approve(receiveContractAddress, x).send({
               feeLimit: "100000000"
             });
           case 12:
