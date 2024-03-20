@@ -1,0 +1,27 @@
+.home-page .top-handle {
+  border-bottom: 1px solid #ededed;
+}
+.home-page .h-input {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #677788;
+  outline: none;
+  font-size: 20px;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+.home-page .h-input:hover,
+.home-page .h-input:focus {
+  border-color: #2361f9;
+}
+.home-page .card-cont .card-item {
+  width: 64px;
+  height: 64px;
+  background-color: #2361f9;
+  color: #fff;
+  font-size: 24px;
+  margin: 12px;
+}
+
+
+/*# sourceMappingURL=/home.377836a1.css.map */

